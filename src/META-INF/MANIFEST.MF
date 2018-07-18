@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Rsrc-Class-Path: ./ AnimatedTransitions.jar AppFramework.jar beautyeye
+ _lnf.jar holidays__V1.0.jar jardiff.jar jhcore__V1.0.jar jlfgr__V1.0.
+ jar jnlp-servlet.jar jnlp.jar swing-worker.jar swingx.jar TimingFrame
+ work.jar json-lib-2.2.2-jdk15.jar commons-lang-2.6.jar ezmorph-1.0.6.
+ jar commons-logging-1.0.4.jar commons-collections-3.2.1.jar commons-b
+ eanutils-1.8.3.jar calendar.jar jgoodies-common-1.7.0.jar jgoodies-fo
+ rms-1.7.2.jar epps-merchantsignature-0.0.3.jar commons-net-3.1-ftp.ja
+ r mysql-connector-java-5.1.38.jar
+Class-Path: .
+Rsrc-Main-Class: com.citydo.tools.MyTools
+Main-Class: org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader
+

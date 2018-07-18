@@ -1,0 +1,204 @@
+JFDML JFormDesigner: "6.0.1.0.112" Java: "1.7.0_79" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+			"$columnSpecs": "left:pref, labelcompgap, left:pref:grow"
+			"$rowSpecs": "fill:pref, linegap, fill:pref, linegap, fill:pref, linegap, fill:pref, linegap, fill:pref, linegap, fill:pref:grow"
+		} ) {
+			name: "this"
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "remark"
+				"text": "仅供开发测试使用，切记不可用于非法活动，否则后果自负！"
+				"font": new java.awt.Font( "微软雅黑", 0, 14 )
+				"foreground": sfield java.awt.Color red
+			}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+				"gridWidth": 3
+				"hAlign": sfield com.jgoodies.forms.layout.CellConstraints LEFT
+				"vAlign": sfield com.jgoodies.forms.layout.CellConstraints FILL
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "labelLocation"
+				"text": "地点："
+				"font": new java.awt.Font( "微软雅黑", 0, 14 )
+			}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+				"gridX": 1
+				"gridY": 3
+				"hAlign": sfield com.jgoodies.forms.layout.CellConstraints LEFT
+				"vAlign": sfield com.jgoodies.forms.layout.CellConstraints FILL
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+				"$columnSpecs": "left:max(pref;50dlu), labelcompgap, left:max(pref;50dlu), labelcompgap, left:max(pref;50dlu)"
+				"$rowSpecs": "default"
+			} ) {
+				name: "panel1"
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "boxP"
+					"font": new java.awt.Font( "微软雅黑", 0, 12 )
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "actionPerformed", true ) )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 1
+					"gridY": 1
+					"hAlign": sfield com.jgoodies.forms.layout.CellConstraints FILL
+					"vAlign": sfield com.jgoodies.forms.layout.CellConstraints FILL
+				} )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "boxC"
+					"font": new java.awt.Font( "微软雅黑", 0, 12 )
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "actionPerformed", true ) )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 3
+					"gridY": 1
+					"hAlign": sfield com.jgoodies.forms.layout.CellConstraints FILL
+					"vAlign": sfield com.jgoodies.forms.layout.CellConstraints FILL
+				} )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "boxA"
+					"font": new java.awt.Font( "微软雅黑", 0, 12 )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 5
+					"gridY": 1
+					"hAlign": sfield com.jgoodies.forms.layout.CellConstraints FILL
+					"vAlign": sfield com.jgoodies.forms.layout.CellConstraints FILL
+				} )
+			}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+				"gridX": 3
+				"gridY": 3
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "labelTime"
+				"text": "时间："
+				"font": new java.awt.Font( "微软雅黑", 0, 14 )
+			}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+				"gridX": 1
+				"gridY": 5
+				"hAlign": sfield com.jgoodies.forms.layout.CellConstraints LEFT
+				"vAlign": sfield com.jgoodies.forms.layout.CellConstraints FILL
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+				"$columnSpecs": "max(pref;60dlu), labelcompgap, default"
+				"$rowSpecs": "default"
+			} ) {
+				name: "panel2"
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "date"
+					"font": new java.awt.Font( "微软雅黑", 0, 14 )
+					"text": "2017-07-31"
+					"editable": false
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 1
+					"gridY": 1
+					"hAlign": sfield com.jgoodies.forms.layout.CellConstraints FILL
+					"vAlign": sfield com.jgoodies.forms.layout.CellConstraints FILL
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "dateButton"
+					"text": "获取时间"
+					"font": new java.awt.Font( "微软雅黑", 0, 14 )
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "actionPerformed", true ) )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 3
+					"gridY": 1
+					"hAlign": sfield com.jgoodies.forms.layout.CellConstraints FILL
+					"vAlign": sfield com.jgoodies.forms.layout.CellConstraints FILL
+				} )
+			}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+				"gridX": 3
+				"gridY": 5
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "labelSex"
+				"text": "性别："
+				"font": new java.awt.Font( "微软雅黑", 0, 14 )
+			}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+				"gridX": 1
+				"gridY": 7
+				"hAlign": sfield com.jgoodies.forms.layout.CellConstraints LEFT
+				"vAlign": sfield com.jgoodies.forms.layout.CellConstraints FILL
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+				"$columnSpecs": "left:max(pref;30dlu), labelcompgap, left:max(pref;30dlu)"
+				"$rowSpecs": "default"
+			} ) {
+				name: "panel3"
+				add( new FormComponent( "javax.swing.JRadioButton" ) {
+					name: "radioG"
+					"text": "男"
+					"font": new java.awt.Font( "微软雅黑", 0, 14 )
+					"selected": true
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 1
+					"gridY": 1
+					"hAlign": sfield com.jgoodies.forms.layout.CellConstraints FILL
+					"vAlign": sfield com.jgoodies.forms.layout.CellConstraints FILL
+				} )
+				add( new FormComponent( "javax.swing.JRadioButton" ) {
+					name: "radioM"
+					"text": "女"
+					"font": new java.awt.Font( "微软雅黑", 0, 14 )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 3
+					"gridY": 1
+					"hAlign": sfield com.jgoodies.forms.layout.CellConstraints FILL
+					"vAlign": sfield com.jgoodies.forms.layout.CellConstraints FILL
+				} )
+			}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+				"gridX": 3
+				"gridY": 7
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "labelNum"
+				"text": "数量："
+				"font": new java.awt.Font( "微软雅黑", 0, 14 )
+			}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+				"gridX": 1
+				"gridY": 9
+				"hAlign": sfield com.jgoodies.forms.layout.CellConstraints LEFT
+				"vAlign": sfield com.jgoodies.forms.layout.CellConstraints FILL
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+				"$columnSpecs": "left:max(pref;60dlu), labelcompgap, left:pref"
+				"$rowSpecs": "default"
+			} ) {
+				name: "panel4"
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "num"
+					"font": new java.awt.Font( "微软雅黑", 0, 14 )
+					"text": "5"
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 1
+					"gridY": 1
+					"hAlign": sfield com.jgoodies.forms.layout.CellConstraints FILL
+					"vAlign": sfield com.jgoodies.forms.layout.CellConstraints FILL
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "submit"
+					"text": "提交"
+					"font": new java.awt.Font( "微软雅黑", 0, 14 )
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "actionPerformed", true ) )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 3
+					"gridY": 1
+					"hAlign": sfield com.jgoodies.forms.layout.CellConstraints FILL
+					"vAlign": sfield com.jgoodies.forms.layout.CellConstraints FILL
+				} )
+			}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+				"gridX": 3
+				"gridY": 9
+			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane1"
+				add( new FormComponent( "javax.swing.JTextArea" ) {
+					name: "result"
+				} )
+			}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+				"gridY": 11
+				"gridWidth": 3
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 400, 300 )
+		} )
+	}
+}
