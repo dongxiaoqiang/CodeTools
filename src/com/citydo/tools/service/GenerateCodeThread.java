@@ -1027,9 +1027,9 @@ public class GenerateCodeThread implements Runnable {
 
 	public static void main(String[] args) {
 		GenerateCodeThread t = new GenerateCodeThread();
-		t.setDbUrl("jdbc:mysql://119.3.1.71:3306/jghg");
-		t.setDbUserName("jghg");
-		t.setDbPassword("Zaq12wsx!");
+		t.setDbUrl("jdbc:mysql://localhost:3306/jghg");
+		t.setDbUserName("root");
+		t.setDbPassword("123456");
 		t.setTableName("label_table");
 		t.setTableNamePrefix("");
 		t.setMycatColumn("");
