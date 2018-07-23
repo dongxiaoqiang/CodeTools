@@ -9,5 +9,5 @@ Rsrc-Class-Path: ./ AnimatedTransitions.jar AppFramework.jar beautyeye
  r mysql-connector-java-5.1.38.jar
 Class-Path: .
 Rsrc-Main-Class: com.citydo.tools.MyTools
-Main-Class: org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader
+Main-Class: com.citydo.tools.MyTools
 
