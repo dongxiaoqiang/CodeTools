@@ -716,6 +716,16 @@ public class GenerateCodeThread implements Runnable {
 				type.add("BigDecimal");
 				MessageUtil.appendLine(br, "import java.math.BigDecimal;");
 			}
+
+			if ("Integer".equals(column.getJavaType()) && !type.contains("Integer")) {
+				type.add("Integer");
+				MessageUtil.appendLine(br, "import java.lang.Integer;");
+			}
+
+			if ("Long".equals(column.getJavaType()) && !type.contains("Long")) {
+				type.add("Long");
+				MessageUtil.appendLine(br, "import java.lang.Long;");
+			}
 		}
 
 		MessageUtil.appendLine(br, "");

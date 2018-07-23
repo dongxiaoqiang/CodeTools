@@ -15,8 +15,8 @@ public class Column {
     private static Map<String, String> typeMap = new HashMap();
 
     static {
-        typeMap.put("int", "int");
-        typeMap.put("bigint", "long");
+        typeMap.put("int", "Integer");
+        typeMap.put("bigint", "Long");
         typeMap.put("date", "Date");
         typeMap.put("datetime", "Timestamp");
         typeMap.put("timestamp", "Timestamp");
