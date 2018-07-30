@@ -122,9 +122,9 @@ public class GenerateCodeThread implements Runnable {
 
 		this.tableName2 = str;
 		this.entityName = str + "Entity";
-		this.daoName = str + "Dao";
+		this.daoName = str + "Mapper";
 		this.serviceName = str + "Service";
-		this.mapperName = this.daoName.substring(0, 1).toLowerCase() + this.daoName.substring(1) + "Mapper";
+		this.mapperName = this.daoName;
 	}
 
 	private void generateCode() throws Exception {
@@ -570,7 +570,7 @@ public class GenerateCodeThread implements Runnable {
 		BufferedWriter br = null;
 
 		try {
-			File tmp = new File(file.getCanonicalPath() + File.separator + "I" + this.daoName + ".java");
+			File tmp = new File(file.getCanonicalPath() + File.separator + this.daoName + ".java");
 			if (tmp.exists()) {
 				tmp.delete();
 			}
@@ -588,7 +588,7 @@ public class GenerateCodeThread implements Runnable {
 	}
 
 	private void generateDaoInterface(BufferedWriter br) throws Exception {
-		String fileName = "I" + this.daoName;
+		String fileName = this.daoName;
 		this.generateFileComment(br, fileName, "对应的DAO接口");
 		MessageUtil.appendLine(br, "package " + this.daoPackage + ";");
 		MessageUtil.appendLine(br, "");
