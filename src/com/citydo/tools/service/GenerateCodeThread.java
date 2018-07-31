@@ -871,7 +871,10 @@ public class GenerateCodeThread implements Runnable {
 	private Connection getConnection() throws Exception {
 		MessageUtil.appendMsg(this.result, "连接数据库");
 		Connection c = null;
-
+		String dbUrlParam = "?useUnicode=true&characterEncoding=utf8&useSSL=true";
+		if (!this.dbUrl.contains("?") && !this.dbUrl.contains("useSSL=true")) {
+			this.dbUrl = this.dbUrl + dbUrlParam;
+		}
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			c = DriverManager.getConnection(this.dbUrl, this.dbUserName, this.dbPassword);
