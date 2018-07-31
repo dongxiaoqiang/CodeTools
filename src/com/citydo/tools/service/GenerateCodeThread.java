@@ -593,13 +593,15 @@ public class GenerateCodeThread implements Runnable {
 
 	private void generateDaoInterface(BufferedWriter br) throws Exception {
 		String fileName = this.daoName;
-		this.generateFileComment(br, fileName, "对应的DAO接口");
+		this.generateFileComment(br, fileName, "对应的Mapper接口");
 		MessageUtil.appendLine(br, "package " + this.daoPackage + ";");
 		MessageUtil.appendLine(br, "");
 		MessageUtil.appendLine(br, "import java.util.List;");
+		MessageUtil.appendLine(br, "import org.apache.ibatis.annotations.Mapper;");
 		MessageUtil.appendLine(br, "import " + this.entityPackage + "." + this.entityName + ";");
 		MessageUtil.appendLine(br, "");
-		this.generateClassComment(br, "对应的DAO接口");
+		this.generateClassComment(br, "对应的Mapper接口");
+		MessageUtil.appendLine(br, "@Mapper");
 		MessageUtil.appendLine(br, "public interface " + fileName + " {");
 		MessageUtil.appendLine(br, "");
 		MessageUtil.appendLine(br, "    /**");
