@@ -125,6 +125,7 @@ public class GenerateCodeThread implements Runnable {
 		this.daoName = str + "Mapper";
 		this.serviceName = str + "Service";
 		this.mapperName = this.daoName;
+		this.namespace = this.daoPackage+"."+this.daoName;
 	}
 
 	private void generateCode() throws Exception {
