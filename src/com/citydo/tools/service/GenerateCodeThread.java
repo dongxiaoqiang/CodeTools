@@ -731,9 +731,10 @@ public class GenerateCodeThread implements Runnable {
 				MessageUtil.appendLine(br, "import java.lang.Long;");
 			}
 		}
-
+		MessageUtil.appendLine(br, "import lombok.Data;");
 		MessageUtil.appendLine(br, "");
 		this.generateClassComment(br, "对应的实体类");
+		MessageUtil.appendLine(br, "@Data");
 		MessageUtil.appendLine(br, "public class " + this.entityName + " {");
 		var4 = this.columns.iterator();
 
@@ -748,51 +749,51 @@ public class GenerateCodeThread implements Runnable {
 
 		var4 = this.columns.iterator();
 
-		while (var4.hasNext()) {
-			column = (Column) var4.next();
-			String tmp = this.change(column.getJavaName());
-			MessageUtil.appendLine(br, "");
-			MessageUtil.appendLine(br, "    /**");
-			MessageUtil.appendLine(br, "     * @return the " + column.getJavaName());
-			MessageUtil.appendLine(br, "     */");
-			MessageUtil.appendLine(br, "    public " + column.getJavaType() + " get" + tmp + "() {");
-			MessageUtil.appendLine(br, "        return " + column.getJavaName() + ";");
-			MessageUtil.appendLine(br, "    }");
-			MessageUtil.appendLine(br, "");
-			MessageUtil.appendLine(br, "    /**");
-			MessageUtil.appendLine(br,
-					"     * @param " + column.getJavaName() + " the " + column.getJavaName() + " to set");
-			MessageUtil.appendLine(br, "     */");
-			MessageUtil.appendLine(br,
-					"    public void set" + tmp + "(" + column.getJavaType() + " " + column.getJavaName() + ") {");
-			MessageUtil.appendLine(br, "        this." + column.getJavaName() + " = " + column.getJavaName() + ";");
-			MessageUtil.appendLine(br, "    }");
-		}
+//		while (var4.hasNext()) {
+//			column = (Column) var4.next();
+//			String tmp = this.change(column.getJavaName());
+//			MessageUtil.appendLine(br, "");
+//			MessageUtil.appendLine(br, "    /**");
+//			MessageUtil.appendLine(br, "     * @return the " + column.getJavaName());
+//			MessageUtil.appendLine(br, "     */");
+//			MessageUtil.appendLine(br, "    public " + column.getJavaType() + " get" + tmp + "() {");
+//			MessageUtil.appendLine(br, "        return " + column.getJavaName() + ";");
+//			MessageUtil.appendLine(br, "    }");
+//			MessageUtil.appendLine(br, "");
+//			MessageUtil.appendLine(br, "    /**");
+//			MessageUtil.appendLine(br,
+//					"     * @param " + column.getJavaName() + " the " + column.getJavaName() + " to set");
+//			MessageUtil.appendLine(br, "     */");
+//			MessageUtil.appendLine(br,
+//					"    public void set" + tmp + "(" + column.getJavaType() + " " + column.getJavaName() + ") {");
+//			MessageUtil.appendLine(br, "        this." + column.getJavaName() + " = " + column.getJavaName() + ";");
+//			MessageUtil.appendLine(br, "    }");
+//		}
 
-		MessageUtil.appendLine(br, "");
-		MessageUtil.appendLine(br, "    /* (non-Javadoc)");
-		MessageUtil.appendLine(br, "     * @see java.lang.Object#toString()");
-		MessageUtil.appendLine(br, "     */");
-		MessageUtil.appendLine(br, "    @Override");
-		MessageUtil.appendLine(br, "    public String toString() {");
-		StringBuffer sb = new StringBuffer(1024);
+//		MessageUtil.appendLine(br, "");
+//		MessageUtil.appendLine(br, "    /* (non-Javadoc)");
+//		MessageUtil.appendLine(br, "     * @see java.lang.Object#toString()");
+//		MessageUtil.appendLine(br, "     */");
+//		MessageUtil.appendLine(br, "    @Override");
+//		MessageUtil.appendLine(br, "    public String toString() {");
+//		StringBuffer sb = new StringBuffer(1024);
 
-		for (int i = 0; i < this.columns.size(); ++i) {
-			if (i % 3 == 0 && i != 0) {
-				sb.append("\" + \r\n              \"");
-			}
-
-			if (i != 0) {
-				sb.append(", ");
-			}
-
-			sb.append("\\\"" + this.columns.get(i).getJavaName() + "\\\":\\\"\" + " + this.columns.get(i).getJavaName()
-					+ " + \"\\\"");
-		}
-
-		sb.append("}\";");
-		MessageUtil.appendLine(br, "        return \"{" + sb.toString());
-		MessageUtil.appendLine(br, "    }");
+//		for (int i = 0; i < this.columns.size(); ++i) {
+//			if (i % 3 == 0 && i != 0) {
+//				sb.append("\" + \r\n              \"");
+//			}
+//
+//			if (i != 0) {
+//				sb.append(", ");
+//			}
+//
+//			sb.append("\\\"" + this.columns.get(i).getJavaName() + "\\\":\\\"\" + " + this.columns.get(i).getJavaName()
+//					+ " + \"\\\"");
+//		}
+//
+//		sb.append("}\";");
+//		MessageUtil.appendLine(br, "        return \"{" + sb.toString());
+//		MessageUtil.appendLine(br, "    }");
 		MessageUtil.appendLine(br, "");
 		MessageUtil.appendLine(br, "}");
 	}
