@@ -117,10 +117,10 @@ public class CodeGenerateComponent extends JPanel implements MyComponent {
 				return;
 			}
 
-			if (this.namespace.getText().isEmpty()) {
-				JOptionPane.showMessageDialog(this, "请先输入SQL命名空间！", "提示", 2);
-				return;
-			}
+//			if (this.namespace.getText().isEmpty()) {
+//				JOptionPane.showMessageDialog(this, "请先输入SQL命名空间！", "提示", 2);
+//				return;
+//			}
 
 			if (this.user.getText().isEmpty()) {
 				JOptionPane.showMessageDialog(this, "请先输入员工工号！", "提示", 2);
@@ -271,7 +271,7 @@ public class CodeGenerateComponent extends JPanel implements MyComponent {
 		this.entity.setEditable(true);
 		this.entity.setText(config.getProperty("GenerateCode.entity", "com.suning.plslam.entity.business.loan"));
 		this.add(this.entity, CC.xy(3, 11, CC.FILL, CC.FILL));
-		this.daoLabel.setText("DAO包");
+		this.daoLabel.setText("Mapper包");
 		this.daoLabel.setFont(new Font("微软雅黑", 0, 14));
 		this.add(this.daoLabel, CC.xy(5, 11, CC.FILL, CC.FILL));
 		this.dao.setFont(new Font("微软雅黑", 0, 14));
@@ -289,20 +289,20 @@ public class CodeGenerateComponent extends JPanel implements MyComponent {
 		this.otherLabel.setFont(new Font("微软雅黑", 0, 14));
 		this.otherLabel.setForeground(Color.red);
 		this.add(this.otherLabel, CC.xywh(1, 13, 11, 1, CC.LEFT, CC.FILL));
-		this.namespaceLabel.setText("命名空间");
-		this.namespaceLabel.setFont(new Font("微软雅黑", 0, 14));
-		this.add(this.namespaceLabel, CC.xy(1, 15, CC.FILL, CC.FILL));
-		this.namespace.setFont(new Font("微软雅黑", 0, 14));
-		this.namespace.setEditable(true);
-		this.namespace.setText(config.getProperty("GenerateCode.namespace", "business.loan.loanmain"));
-		this.add(this.namespace, CC.xy(3, 15, CC.FILL, CC.FILL));
+//		this.namespaceLabel.setText("命名空间");
+//		this.namespaceLabel.setFont(new Font("微软雅黑", 0, 14));
+//		this.add(this.namespaceLabel, CC.xy(1, 15, CC.FILL, CC.FILL));
+//		this.namespace.setFont(new Font("微软雅黑", 0, 14));
+//		this.namespace.setEditable(true);
+//		this.namespace.setText(config.getProperty("GenerateCode.namespace", "business.loan.loanmain"));
+//		this.add(this.namespace, CC.xy(3, 15, CC.FILL, CC.FILL));
 		this.userLabel.setText("员工工号");
 		this.userLabel.setFont(new Font("微软雅黑", 0, 14));
-		this.add(this.userLabel, CC.xy(5, 15, CC.FILL, CC.FILL));
+		this.add(this.userLabel, CC.xy(1, 15, CC.FILL, CC.FILL));
 		this.user.setFont(new Font("微软雅黑", 0, 14));
 		this.user.setEditable(true);
 		this.user.setText(config.getProperty("GenerateCode.user", "17050528"));
-		this.add(this.user, CC.xy(7, 15, CC.FILL, CC.FILL));
+		this.add(this.user, CC.xy(3, 15, CC.FILL, CC.FILL));
 		this.dirLabel.setText("文件存储目录");
 		this.dirLabel.setFont(new Font("微软雅黑", 0, 14));
 		this.dirLabel.setForeground(Color.red);
