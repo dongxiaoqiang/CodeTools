@@ -872,10 +872,6 @@ public class GenerateCodeThread implements Runnable {
 	private Connection getConnection() throws Exception {
 		MessageUtil.appendMsg(this.result, "连接数据库");
 		Connection c = null;
-		String dbUrlParam = "?useUnicode=true&characterEncoding=utf8&useSSL=true";
-		if (!this.dbUrl.contains("?") && !this.dbUrl.contains("useSSL=true")) {
-			this.dbUrl = this.dbUrl + dbUrlParam;
-		}
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			c = DriverManager.getConnection(this.dbUrl, this.dbUserName, this.dbPassword);
@@ -1048,9 +1044,9 @@ public class GenerateCodeThread implements Runnable {
 
 	public static void main(String[] args) {
 		GenerateCodeThread t = new GenerateCodeThread();
-		t.setDbUrl("jdbc:mysql://localhost:3306/jghg");
+		t.setDbUrl("jdbc:mysql://119.3.2.85:3306/eastjg");
 		t.setDbUserName("root");
-		t.setDbPassword("123456");
+		t.setDbPassword("mCEVgbZv2V0z1");
 		t.setTableName("label_table");
 		t.setTableNamePrefix("");
 		t.setMycatColumn("");
