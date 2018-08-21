@@ -126,7 +126,7 @@ public class GenerateCodeThread implements Runnable {
 		this.daoName = str + "Mapper";
 		this.serviceName = str + "Service";
 		this.mapperName = this.daoName;
-		this.namespace = this.daoPackage+"."+this.daoName;
+		this.namespace = this.daoPackage + "." + this.daoName;
 	}
 
 	private void generateCode() throws Exception {
@@ -140,7 +140,7 @@ public class GenerateCodeThread implements Runnable {
 		dir.mkdir();
 		this.generateEntity(dir);
 		this.generateDaoInterface(dir);
-		//this.generateDaoImpl(dir);
+		// this.generateDaoImpl(dir);
 		this.generateServiceInterface(dir);
 		this.generateServiceImpl(dir);
 		this.generateMapper(dir);
@@ -156,13 +156,15 @@ public class GenerateCodeThread implements Runnable {
 
 	private void generateMapper(File dir) throws Exception {
 		MessageUtil.appendMsg(this.result, "生成SQL文件");
-//		File file = new File(dir.getCanonicalPath() + File.separator + "mapper");
-//		file.mkdirs();
-//		this.delete(file);
+		// File file = new File(dir.getCanonicalPath() + File.separator +
+		// "mapper");
+		// file.mkdirs();
+		// this.delete(file);
 		BufferedWriter br = null;
 
 		try {
-			File tmp = new File(dir.getCanonicalPath() + File.separator + "mapper" + File.separator + this.mapperName + ".xml");
+			File tmp = new File(
+					dir.getCanonicalPath() + File.separator + "mapper" + File.separator + this.mapperName + ".xml");
 			if (tmp.exists()) {
 				tmp.delete();
 			}
@@ -255,32 +257,32 @@ public class GenerateCodeThread implements Runnable {
 
 		MessageUtil.appendLine(br, "        </set>");
 		MessageUtil.appendLine(br, "        where");
-//		if (StringUtils.isNotEmpty(this.mycatColumn)) {
-//			var11 = this.columns.iterator();
-//
-//			while (var11.hasNext()) {
-//				column = (Column) var11.next();
-//				if (this.mycatColumn.equalsIgnoreCase(column.getName())) {
-//					MessageUtil.appendLine(br,
-//							"            " + this.mycatColumn + " = #{" + column.getJavaName() + "}");
-//					break;
-//				}
-//			}
-//		} else {
-//			MessageUtil.appendLine(br, "            1 = 1");
-//		}
+		// if (StringUtils.isNotEmpty(this.mycatColumn)) {
+		// var11 = this.columns.iterator();
+		//
+		// while (var11.hasNext()) {
+		// column = (Column) var11.next();
+		// if (this.mycatColumn.equalsIgnoreCase(column.getName())) {
+		// MessageUtil.appendLine(br,
+		// " " + this.mycatColumn + " = #{" + column.getJavaName() + "}");
+		// break;
+		// }
+		// }
+		// } else {
+		// MessageUtil.appendLine(br, " 1 = 1");
+		// }
 
 		var11 = this.columns.iterator();
 
 		while (var11.hasNext()) {
 			column = (Column) var11.next();
-			//&& !column.getName().equalsIgnoreCase(this.mycatColumn)
-			if (column.isIndex() ) {
-//				MessageUtil.appendLine(br, "            <if test=\"" + column.getJavaName() + " != null and "
-//						+ column.getJavaName() + " != '' \">");
-				MessageUtil.appendLine(br,
-						"              " + column.getName() + " = #{" + column.getJavaName() + "}");
-//				MessageUtil.appendLine(br, "            </if>");
+			// && !column.getName().equalsIgnoreCase(this.mycatColumn)
+			if (column.isIndex()) {
+				// MessageUtil.appendLine(br, " <if test=\"" +
+				// column.getJavaName() + " != null and "
+				// + column.getJavaName() + " != '' \">");
+				MessageUtil.appendLine(br, "              " + column.getName() + " = #{" + column.getJavaName() + "}");
+				// MessageUtil.appendLine(br, " </if>");
 			}
 		}
 
@@ -291,29 +293,29 @@ public class GenerateCodeThread implements Runnable {
 				+ "\" resultType=\"" + entityPath + "\">");
 		MessageUtil.appendLine(br, "        select <include refid=\"" + this.tableName2.toLowerCase() + "_column\" />");
 		MessageUtil.appendLine(br, "        from " + this.tableName);
-//		if (StringUtils.isNotEmpty(this.mycatColumn)) {
-//			var11 = this.columns.iterator();
-//
-//			while (var11.hasNext()) {
-//				column = (Column) var11.next();
-//				if (this.mycatColumn.equalsIgnoreCase(column.getName())) {
-//					MessageUtil.appendLine(br,
-//							"        where " + this.mycatColumn + " = #{" + column.getJavaName() + "}");
-//					break;
-//				}
-//			}
-//			
-//		} else {
-//			MessageUtil.appendLine(br, "        where 1 = 1");
-//		}
+		// if (StringUtils.isNotEmpty(this.mycatColumn)) {
+		// var11 = this.columns.iterator();
+		//
+		// while (var11.hasNext()) {
+		// column = (Column) var11.next();
+		// if (this.mycatColumn.equalsIgnoreCase(column.getName())) {
+		// MessageUtil.appendLine(br,
+		// " where " + this.mycatColumn + " = #{" + column.getJavaName() + "}");
+		// break;
+		// }
+		// }
+		//
+		// } else {
+		// MessageUtil.appendLine(br, " where 1 = 1");
+		// }
 		MessageUtil.appendLine(br, "        where 1 = 1");
 
 		var11 = this.columns.iterator();
 
 		while (var11.hasNext()) {
 			column = (Column) var11.next();
-			//&& !column.getName().equalsIgnoreCase(this.mycatColumn)
-			if (column.isIndex() ) {
+			// && !column.getName().equalsIgnoreCase(this.mycatColumn)
+			if (column.isIndex()) {
 				MessageUtil.appendLine(br, "        <if test=\"" + column.getJavaName() + " != null and "
 						+ column.getJavaName() + " != '' \">");
 				MessageUtil.appendLine(br,
@@ -359,7 +361,7 @@ public class GenerateCodeThread implements Runnable {
 		MessageUtil.appendLine(br, "import java.util.List;");
 		MessageUtil.appendLine(br, "import org.springframework.beans.factory.annotation.Autowired;");
 		MessageUtil.appendLine(br, "import org.springframework.stereotype.Service;");
-		MessageUtil.appendLine(br, "import " + this.daoPackage + ".I" + this.daoName + ";");
+		MessageUtil.appendLine(br, "import " + this.daoPackage + this.daoName + ";");
 		MessageUtil.appendLine(br, "import " + this.entityPackage + "." + this.entityName + ";");
 		MessageUtil.appendLine(br, "import " + this.servicePackage + ".I" + this.serviceName + ";");
 		MessageUtil.appendLine(br, "");
@@ -368,22 +370,22 @@ public class GenerateCodeThread implements Runnable {
 		MessageUtil.appendLine(br, "public class " + fileName + " implements I" + this.serviceName + " {");
 		MessageUtil.appendLine(br, "");
 		MessageUtil.appendLine(br, "    @Autowired");
-		MessageUtil.appendLine(br, "    I" + this.daoName + " dao;");
+		MessageUtil.appendLine(br, "    " + this.daoName + " mapper;");
 		MessageUtil.appendLine(br, "");
 		MessageUtil.appendLine(br, "    @Override");
 		MessageUtil.appendLine(br, "    public int add" + this.tableName2 + "(" + this.entityName + " entity) {");
-		MessageUtil.appendLine(br, "        return dao.add" + this.tableName2 + "(entity);");
+		MessageUtil.appendLine(br, "        return mapper.add" + this.tableName2 + "(entity);");
 		MessageUtil.appendLine(br, "    }");
 		MessageUtil.appendLine(br, "");
 		MessageUtil.appendLine(br, "    @Override");
 		MessageUtil.appendLine(br, "    public int update" + this.tableName2 + "(" + this.entityName + " entity) {");
-		MessageUtil.appendLine(br, "        return dao.update" + this.tableName2 + "(entity);");
+		MessageUtil.appendLine(br, "        return mapper.update" + this.tableName2 + "(entity);");
 		MessageUtil.appendLine(br, "    }");
 		MessageUtil.appendLine(br, "");
 		MessageUtil.appendLine(br, "    @Override");
 		MessageUtil.appendLine(br, "    public List<" + this.entityName + "> query" + this.tableName2 + "("
 				+ this.entityName + " entity) {");
-		MessageUtil.appendLine(br, "        return dao.query" + this.tableName2 + "(entity);");
+		MessageUtil.appendLine(br, "        return mapper.query" + this.tableName2 + "(entity);");
 		MessageUtil.appendLine(br, "    }");
 		MessageUtil.appendLine(br, "");
 		MessageUtil.appendLine(br, "}");
@@ -459,114 +461,129 @@ public class GenerateCodeThread implements Runnable {
 		MessageUtil.appendLine(br, "}");
 	}
 
-//	private void generateDaoImpl(File dir) throws Exception {
-//		MessageUtil.appendMsg(this.result, "生成DAO实现类");
-//		File file = new File(dir.getCanonicalPath() + File.separator + "dao" + File.separator + "impl");
-//		file.mkdirs();
-//		BufferedWriter br = null;
-//
-//		try {
-//			File tmp = new File(file.getCanonicalPath() + File.separator + this.daoName + "Impl.java");
-//			if (tmp.exists()) {
-//				tmp.delete();
-//			}
-//
-//			br = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(tmp), "UTF-8"));
-//			this.generateDaoImpl(br);
-//		} catch (Exception var8) {
-//			var8.printStackTrace();
-//			MessageUtil.appendMsg(this.result, "生成DAO实现类异常：" + var8.getLocalizedMessage());
-//			throw var8;
-//		} finally {
-//			br.close();
-//		}
-//
-//	}
+	// private void generateDaoImpl(File dir) throws Exception {
+	// MessageUtil.appendMsg(this.result, "生成DAO实现类");
+	// File file = new File(dir.getCanonicalPath() + File.separator + "dao" +
+	// File.separator + "impl");
+	// file.mkdirs();
+	// BufferedWriter br = null;
+	//
+	// try {
+	// File tmp = new File(file.getCanonicalPath() + File.separator +
+	// this.daoName + "Impl.java");
+	// if (tmp.exists()) {
+	// tmp.delete();
+	// }
+	//
+	// br = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(tmp),
+	// "UTF-8"));
+	// this.generateDaoImpl(br);
+	// } catch (Exception var8) {
+	// var8.printStackTrace();
+	// MessageUtil.appendMsg(this.result, "生成DAO实现类异常：" +
+	// var8.getLocalizedMessage());
+	// throw var8;
+	// } finally {
+	// br.close();
+	// }
+	//
+	// }
 
-//	private void generateDaoImpl(BufferedWriter br) throws Exception {
-//		String fileName = this.daoName + "Impl";
-//		this.generateFileComment(br, fileName, "对应的DAO实现类");
-//		MessageUtil.appendLine(br, "package " + this.daoPackage + ".impl;");
-//		MessageUtil.appendLine(br, "");
-//		MessageUtil.appendLine(br, "import java.util.List;");
-//		MessageUtil.appendLine(br, "import com.suning.framework.spring.Dao;");
-//		MessageUtil.appendLine(br, "import " + this.daoPackage + ".I" + this.daoName + ";");
-//		MessageUtil.appendLine(br, "import " + this.entityPackage + "." + this.entityName + ";");
-//		StringBuffer sb = new StringBuffer(1024);
-//		Iterator var5 = this.columns.iterator();
-//
-//		while (true) {
-//			while (true) {
-//				Column column;
-//				do {
-//					if (!var5.hasNext()) {
-//						if (sb.length() > 0) {
-//							MessageUtil.appendLine(br, "import org.apache.commons.lang.StringUtils;");
-//						}
-//
-//						MessageUtil.appendLine(br, "");
-//						this.generateClassComment(br, "对应的DAO实现类");
-//						MessageUtil.appendLine(br, "@Dao");
-//						MessageUtil.appendLine(br, "public class " + fileName
-//								+ " extends AbstractDaoSupport implements I" + this.daoName + " {");
-//						MessageUtil.appendLine(br, "");
-//						MessageUtil.appendLine(br,
-//								"    private static final String NAMESPACE = \"" + this.namespace + ".\";");
-//						MessageUtil.appendLine(br, "");
-//						MessageUtil.appendLine(br, "    @Override");
-//						MessageUtil.appendLine(br,
-//								"    public int add" + this.tableName2 + "(" + this.entityName + " entity) {");
-//						MessageUtil.appendLine(br,
-//								"        return getGenericResult(getSqlSession().insert(NAMESPACE + \"add"
-//										+ this.tableName2 + "\", entity) > 0 ? Boolean.TRUE : Boolean.FALSE);");
-//						MessageUtil.appendLine(br, "    }");
-//						MessageUtil.appendLine(br, "");
-//						MessageUtil.appendLine(br, "    @Override");
-//						MessageUtil.appendLine(br,
-//								"    public int update" + this.tableName2 + "(" + this.entityName + " entity) {");
-//						if (sb.length() > 0) {
-//							MessageUtil.appendLine(br, "        if(" + sb.toString() + ") {");
-//							MessageUtil.appendLine(br, "            // 更新条件没有，返回失败");
-//							MessageUtil.appendLine(br, "            return getGenericResult(Boolean.FALSE);");
-//							MessageUtil.appendLine(br, "        }");
-//						}
-//
-//						MessageUtil.appendLine(br,
-//								"        return getGenericResult(getSqlSession().update(NAMESPACE + \"update"
-//										+ this.tableName2 + "\", entity) > 0 ? Boolean.TRUE : Boolean.FALSE);");
-//						MessageUtil.appendLine(br, "    }");
-//						MessageUtil.appendLine(br, "");
-//						MessageUtil.appendLine(br, "    @Override");
-//						MessageUtil.appendLine(br, "    @SuppressWarnings(\"unchecked\")");
-//						MessageUtil.appendLine(br, "    public List<" + this.entityName + "> query" + this.tableName2
-//								+ "(" + this.entityName + " entity) {");
-//						MessageUtil.appendLine(br, "        List<" + this.entityName + "> list = null;");
-//						MessageUtil.appendLine(br, "            list = getSqlSession().selectList(NAMESPACE + \"query"
-//								+ this.tableName2 + "\", entity);");
-//						MessageUtil.appendLine(br, "        }");
-//						MessageUtil.appendLine(br, "        return list;");
-//						MessageUtil.appendLine(br, "    }");
-//						MessageUtil.appendLine(br, "");
-//						MessageUtil.appendLine(br, "}");
-//						return;
-//					}
-//
-//					column = (Column) var5.next();
-//				} while (!column.isIndex());
-//
-//				if ("String".equals(column.getJavaType())) {
-//					if (sb.length() > 0) {
-//						sb.append(" && ");
-//					}
-//
-//					sb.append("StringUtils.isEmpty(entity.get" + this.change(column.getJavaName()) + "())");
-//				} else if ("Date".equals(column.getJavaType()) || "Timestamp".equals(column.getJavaType())
-//						|| "BigDecimal".equals(column.getJavaType())) {
-//					sb.append("null == entity.get" + this.change(column.getJavaName()) + "()");
-//				}
-//			}
-//		}
-//	}
+	// private void generateDaoImpl(BufferedWriter br) throws Exception {
+	// String fileName = this.daoName + "Impl";
+	// this.generateFileComment(br, fileName, "对应的DAO实现类");
+	// MessageUtil.appendLine(br, "package " + this.daoPackage + ".impl;");
+	// MessageUtil.appendLine(br, "");
+	// MessageUtil.appendLine(br, "import java.util.List;");
+	// MessageUtil.appendLine(br, "import com.suning.framework.spring.Dao;");
+	// MessageUtil.appendLine(br, "import " + this.daoPackage + ".I" +
+	// this.daoName + ";");
+	// MessageUtil.appendLine(br, "import " + this.entityPackage + "." +
+	// this.entityName + ";");
+	// StringBuffer sb = new StringBuffer(1024);
+	// Iterator var5 = this.columns.iterator();
+	//
+	// while (true) {
+	// while (true) {
+	// Column column;
+	// do {
+	// if (!var5.hasNext()) {
+	// if (sb.length() > 0) {
+	// MessageUtil.appendLine(br, "import
+	// org.apache.commons.lang.StringUtils;");
+	// }
+	//
+	// MessageUtil.appendLine(br, "");
+	// this.generateClassComment(br, "对应的DAO实现类");
+	// MessageUtil.appendLine(br, "@Dao");
+	// MessageUtil.appendLine(br, "public class " + fileName
+	// + " extends AbstractDaoSupport implements I" + this.daoName + " {");
+	// MessageUtil.appendLine(br, "");
+	// MessageUtil.appendLine(br,
+	// " private static final String NAMESPACE = \"" + this.namespace + ".\";");
+	// MessageUtil.appendLine(br, "");
+	// MessageUtil.appendLine(br, " @Override");
+	// MessageUtil.appendLine(br,
+	// " public int add" + this.tableName2 + "(" + this.entityName + " entity)
+	// {");
+	// MessageUtil.appendLine(br,
+	// " return getGenericResult(getSqlSession().insert(NAMESPACE + \"add"
+	// + this.tableName2 + "\", entity) > 0 ? Boolean.TRUE : Boolean.FALSE);");
+	// MessageUtil.appendLine(br, " }");
+	// MessageUtil.appendLine(br, "");
+	// MessageUtil.appendLine(br, " @Override");
+	// MessageUtil.appendLine(br,
+	// " public int update" + this.tableName2 + "(" + this.entityName + "
+	// entity) {");
+	// if (sb.length() > 0) {
+	// MessageUtil.appendLine(br, " if(" + sb.toString() + ") {");
+	// MessageUtil.appendLine(br, " // 更新条件没有，返回失败");
+	// MessageUtil.appendLine(br, " return getGenericResult(Boolean.FALSE);");
+	// MessageUtil.appendLine(br, " }");
+	// }
+	//
+	// MessageUtil.appendLine(br,
+	// " return getGenericResult(getSqlSession().update(NAMESPACE + \"update"
+	// + this.tableName2 + "\", entity) > 0 ? Boolean.TRUE : Boolean.FALSE);");
+	// MessageUtil.appendLine(br, " }");
+	// MessageUtil.appendLine(br, "");
+	// MessageUtil.appendLine(br, " @Override");
+	// MessageUtil.appendLine(br, " @SuppressWarnings(\"unchecked\")");
+	// MessageUtil.appendLine(br, " public List<" + this.entityName + "> query"
+	// + this.tableName2
+	// + "(" + this.entityName + " entity) {");
+	// MessageUtil.appendLine(br, " List<" + this.entityName + "> list =
+	// null;");
+	// MessageUtil.appendLine(br, " list = getSqlSession().selectList(NAMESPACE
+	// + \"query"
+	// + this.tableName2 + "\", entity);");
+	// MessageUtil.appendLine(br, " }");
+	// MessageUtil.appendLine(br, " return list;");
+	// MessageUtil.appendLine(br, " }");
+	// MessageUtil.appendLine(br, "");
+	// MessageUtil.appendLine(br, "}");
+	// return;
+	// }
+	//
+	// column = (Column) var5.next();
+	// } while (!column.isIndex());
+	//
+	// if ("String".equals(column.getJavaType())) {
+	// if (sb.length() > 0) {
+	// sb.append(" && ");
+	// }
+	//
+	// sb.append("StringUtils.isEmpty(entity.get" +
+	// this.change(column.getJavaName()) + "())");
+	// } else if ("Date".equals(column.getJavaType()) ||
+	// "Timestamp".equals(column.getJavaType())
+	// || "BigDecimal".equals(column.getJavaType())) {
+	// sb.append("null == entity.get" + this.change(column.getJavaName()) +
+	// "()");
+	// }
+	// }
+	// }
+	// }
 
 	private void generateDaoInterface(File dir) throws Exception {
 		MessageUtil.appendMsg(this.result, "生成DAO接口");
@@ -753,51 +770,56 @@ public class GenerateCodeThread implements Runnable {
 
 		var4 = this.columns.iterator();
 
-//		while (var4.hasNext()) {
-//			column = (Column) var4.next();
-//			String tmp = this.change(column.getJavaName());
-//			MessageUtil.appendLine(br, "");
-//			MessageUtil.appendLine(br, "    /**");
-//			MessageUtil.appendLine(br, "     * @return the " + column.getJavaName());
-//			MessageUtil.appendLine(br, "     */");
-//			MessageUtil.appendLine(br, "    public " + column.getJavaType() + " get" + tmp + "() {");
-//			MessageUtil.appendLine(br, "        return " + column.getJavaName() + ";");
-//			MessageUtil.appendLine(br, "    }");
-//			MessageUtil.appendLine(br, "");
-//			MessageUtil.appendLine(br, "    /**");
-//			MessageUtil.appendLine(br,
-//					"     * @param " + column.getJavaName() + " the " + column.getJavaName() + " to set");
-//			MessageUtil.appendLine(br, "     */");
-//			MessageUtil.appendLine(br,
-//					"    public void set" + tmp + "(" + column.getJavaType() + " " + column.getJavaName() + ") {");
-//			MessageUtil.appendLine(br, "        this." + column.getJavaName() + " = " + column.getJavaName() + ";");
-//			MessageUtil.appendLine(br, "    }");
-//		}
+		// while (var4.hasNext()) {
+		// column = (Column) var4.next();
+		// String tmp = this.change(column.getJavaName());
+		// MessageUtil.appendLine(br, "");
+		// MessageUtil.appendLine(br, " /**");
+		// MessageUtil.appendLine(br, " * @return the " + column.getJavaName());
+		// MessageUtil.appendLine(br, " */");
+		// MessageUtil.appendLine(br, " public " + column.getJavaType() + " get"
+		// + tmp + "() {");
+		// MessageUtil.appendLine(br, " return " + column.getJavaName() + ";");
+		// MessageUtil.appendLine(br, " }");
+		// MessageUtil.appendLine(br, "");
+		// MessageUtil.appendLine(br, " /**");
+		// MessageUtil.appendLine(br,
+		// " * @param " + column.getJavaName() + " the " + column.getJavaName()
+		// + " to set");
+		// MessageUtil.appendLine(br, " */");
+		// MessageUtil.appendLine(br,
+		// " public void set" + tmp + "(" + column.getJavaType() + " " +
+		// column.getJavaName() + ") {");
+		// MessageUtil.appendLine(br, " this." + column.getJavaName() + " = " +
+		// column.getJavaName() + ";");
+		// MessageUtil.appendLine(br, " }");
+		// }
 
-//		MessageUtil.appendLine(br, "");
-//		MessageUtil.appendLine(br, "    /* (non-Javadoc)");
-//		MessageUtil.appendLine(br, "     * @see java.lang.Object#toString()");
-//		MessageUtil.appendLine(br, "     */");
-//		MessageUtil.appendLine(br, "    @Override");
-//		MessageUtil.appendLine(br, "    public String toString() {");
-//		StringBuffer sb = new StringBuffer(1024);
+		// MessageUtil.appendLine(br, "");
+		// MessageUtil.appendLine(br, " /* (non-Javadoc)");
+		// MessageUtil.appendLine(br, " * @see java.lang.Object#toString()");
+		// MessageUtil.appendLine(br, " */");
+		// MessageUtil.appendLine(br, " @Override");
+		// MessageUtil.appendLine(br, " public String toString() {");
+		// StringBuffer sb = new StringBuffer(1024);
 
-//		for (int i = 0; i < this.columns.size(); ++i) {
-//			if (i % 3 == 0 && i != 0) {
-//				sb.append("\" + \r\n              \"");
-//			}
-//
-//			if (i != 0) {
-//				sb.append(", ");
-//			}
-//
-//			sb.append("\\\"" + this.columns.get(i).getJavaName() + "\\\":\\\"\" + " + this.columns.get(i).getJavaName()
-//					+ " + \"\\\"");
-//		}
-//
-//		sb.append("}\";");
-//		MessageUtil.appendLine(br, "        return \"{" + sb.toString());
-//		MessageUtil.appendLine(br, "    }");
+		// for (int i = 0; i < this.columns.size(); ++i) {
+		// if (i % 3 == 0 && i != 0) {
+		// sb.append("\" + \r\n \"");
+		// }
+		//
+		// if (i != 0) {
+		// sb.append(", ");
+		// }
+		//
+		// sb.append("\\\"" + this.columns.get(i).getJavaName() + "\\\":\\\"\" +
+		// " + this.columns.get(i).getJavaName()
+		// + " + \"\\\"");
+		// }
+		//
+		// sb.append("}\";");
+		// MessageUtil.appendLine(br, " return \"{" + sb.toString());
+		// MessageUtil.appendLine(br, " }");
 		MessageUtil.appendLine(br, "");
 		MessageUtil.appendLine(br, "}");
 	}
@@ -805,7 +827,8 @@ public class GenerateCodeThread implements Runnable {
 	private void queryTableInfo() throws Exception {
 		MessageUtil.appendMsg(this.result, "查询表信息");
 		this.schema = con.getCatalog();
-		String sql = "select TABLE_COMMENT from information_schema.tables where table_name = '" + this.tableName + "' and TABLE_SCHEMA = '" + this.schema +"'";
+		String sql = "select TABLE_COMMENT from information_schema.tables where table_name = '" + this.tableName
+				+ "' and TABLE_SCHEMA = '" + this.schema + "'";
 		System.out.println(sql);
 		this.rs = this.stat.executeQuery(sql);
 		if (!this.rs.next()) {
@@ -821,7 +844,7 @@ public class GenerateCodeThread implements Runnable {
 			this.closeResultSet(this.rs);
 			MessageUtil.appendMsg(this.result, "查询表字段信息");
 			sql = "select COLUMN_NAME, DATA_TYPE, COLUMN_COMMENT, EXTRA, COLUMN_KEY from information_schema.columns where table_name = '"
-					+ this.tableName + "' and TABLE_SCHEMA = '" + schema +"'";
+					+ this.tableName + "' and TABLE_SCHEMA = '" + schema + "'";
 
 			Column column;
 			for (this.rs = this.stat.executeQuery(sql); this.rs.next(); this.columns.add(column)) {
