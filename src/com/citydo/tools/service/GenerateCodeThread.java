@@ -48,6 +48,7 @@ public class GenerateCodeThread implements Runnable {
 	private Connection con = null;
 	private Statement stat = null;
 	private ResultSet rs = null;
+	private String schema = "";
 	private String tableComment = "";
 	private List<Column> columns = new ArrayList();
 	private String tableName2 = "";
@@ -803,7 +804,8 @@ public class GenerateCodeThread implements Runnable {
 
 	private void queryTableInfo() throws Exception {
 		MessageUtil.appendMsg(this.result, "查询表信息");
-		String sql = "select TABLE_COMMENT from information_schema.tables where table_name = '" + this.tableName + "'";
+		this.schema = con.getCatalog();
+		String sql = "select TABLE_COMMENT from information_schema.tables where table_name = '" + this.tableName + "' and TABLE_SCHEMA = '" + this.schema +"'";
 		System.out.println(sql);
 		this.rs = this.stat.executeQuery(sql);
 		if (!this.rs.next()) {
@@ -819,7 +821,7 @@ public class GenerateCodeThread implements Runnable {
 			this.closeResultSet(this.rs);
 			MessageUtil.appendMsg(this.result, "查询表字段信息");
 			sql = "select COLUMN_NAME, DATA_TYPE, COLUMN_COMMENT, EXTRA, COLUMN_KEY from information_schema.columns where table_name = '"
-					+ this.tableName + "'";
+					+ this.tableName + "' and TABLE_SCHEMA = '" + schema +"'";
 
 			Column column;
 			for (this.rs = this.stat.executeQuery(sql); this.rs.next(); this.columns.add(column)) {
