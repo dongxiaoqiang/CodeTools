@@ -1,0 +1,9 @@
+#菜单名,菜单ID,菜单对应的class全名(class继承MyComponent接口)
+
+代码自动生成,code_generate,com.citydo.tools.component.implement.CodeGenerateComponent
+#SQL语句美化,sql_format,com.citydo.tools.component.implement.SqlFormatComponent
+#JSON格式化,json_view,com.citydo.tools.component.implement.JsonFormatComponent
+身份证号构造,ids_generate,com.citydo.tools.component.implement.IdsGenerateComponent
+日志对象扫描,logger_scan,com.citydo.tools.component.implement.LoggerScanComponent
+#请求参数签名,param_sign,com.citydo.tools.component.implement.ParamSignComponent
+日志文件检索,logger_search,com.citydo.tools.component.implement.LoggerSearchComponent

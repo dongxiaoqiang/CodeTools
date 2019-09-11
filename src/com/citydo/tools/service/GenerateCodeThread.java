@@ -359,9 +359,9 @@ public class GenerateCodeThread implements Runnable {
 		MessageUtil.appendLine(br, "package " + this.servicePackage + ".impl;");
 		MessageUtil.appendLine(br, "");
 		MessageUtil.appendLine(br, "import java.util.List;");
-		MessageUtil.appendLine(br, "import org.springframework.beans.factory.annotation.Autowired;");
+		MessageUtil.appendLine(br, "import javax.annotation.Resource;");
 		MessageUtil.appendLine(br, "import org.springframework.stereotype.Service;");
-		MessageUtil.appendLine(br, "import " + this.daoPackage + this.daoName + ";");
+		MessageUtil.appendLine(br, "import " + this.daoPackage + "." + this.daoName + ";");
 		MessageUtil.appendLine(br, "import " + this.entityPackage + "." + this.entityName + ";");
 		MessageUtil.appendLine(br, "import " + this.servicePackage + ".I" + this.serviceName + ";");
 		MessageUtil.appendLine(br, "");
@@ -369,7 +369,7 @@ public class GenerateCodeThread implements Runnable {
 		MessageUtil.appendLine(br, "@Service");
 		MessageUtil.appendLine(br, "public class " + fileName + " implements I" + this.serviceName + " {");
 		MessageUtil.appendLine(br, "");
-		MessageUtil.appendLine(br, "    @Autowired");
+		MessageUtil.appendLine(br, "    @Resource");
 		MessageUtil.appendLine(br, "    " + this.daoName + " mapper;");
 		MessageUtil.appendLine(br, "");
 		MessageUtil.appendLine(br, "    @Override");
@@ -1069,15 +1069,15 @@ public class GenerateCodeThread implements Runnable {
 
 	public static void main(String[] args) {
 		GenerateCodeThread t = new GenerateCodeThread();
-		t.setDbUrl("jdbc:mysql://119.3.2.85:3306/eastjg");
+		t.setDbUrl("jdbc:mysql://47.111.17.157:13306/data_window_dev");
 		t.setDbUserName("root");
-		t.setDbPassword("mCEVgbZv2V0z1");
-		t.setTableName("label_table");
+		t.setDbPassword("mCEVgbZv2V0z");
+		t.setTableName("window_file");
 		t.setTableNamePrefix("");
 		t.setMycatColumn("");
 		JTextArea result = new JTextArea();
 		t.setResult(result);
-		t.setDirPath("D:\\output");
+    	t.setDirPath("C:\\Users\\82344\\Desktop\\Code");
 		t.setEntityPackage("cn.com.citydo.web.domain");
 		t.setDaoPackage("cn.com.citydo.web.mapper");
 		t.setServicePackage("cn.com.citydo.web.service");
